@@ -1,4 +1,4 @@
-export const allQuiz = [
+export const allQuestion = [
     {
         question: "Which of the following is a client site language?",
         a: "Java",

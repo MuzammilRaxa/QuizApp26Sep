@@ -103,9 +103,6 @@
   background-color: aquamarine;
 }
 
-.option101:active {
-  background-color: bisque;
-}
 
 .optionBtn:hover {
   background-color: rgb(159, 176, 170);
