@@ -72,6 +72,12 @@
 
 }
 
+
+#imgBack {
+  background-image: url(../src/Helpers/images/Expertizo-logo.png);
+}
+
+
 .progress {
   height: 3px
 }

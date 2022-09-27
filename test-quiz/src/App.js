@@ -33,7 +33,7 @@ function App() {
 
           {quizState === 'menu' && <StartPage />}
           {quizState === 'startQuiz' && <QuizPage />}
-          {quizState === 'quizResult' && <EndPage />}
+          {quizState === '`quizResult`' && <EndPage />}
 
         </QuizStateContext.Provider>
 

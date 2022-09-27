@@ -1,10 +1,11 @@
 import '../App.css'
-// import React, { useEffect } from 'react'
+import React from 'react'
 import { useContext } from 'react';
 import { useState } from 'react';
-import { QuizStateContext } from '../Helpers/Context'
+import { ReactDOM } from 'react-dom';
+import { QuizStateContext } from '../Helpers/Context';
 import { allQuestion } from '../Helpers/Questions';
-
+import ErrorMessage from '../Components/ErrorMessage/ErrorMessage';
 
 function QuizPage() {
 
@@ -22,13 +23,24 @@ function QuizPage() {
 
 
   const [selected, setSelected] = useState('');
+  const [error, setError] = useState(false);
 
 
 
   // console.log('consoleee', allQuestion[questionIndex].correct, 'selecteddd', selected)
 
+
   const selectOption = (option) => {
     setSelected(option);
+
+    if (allQuestion[questionIndex].correct === selected) {
+      setError(true);
+      return;
+    } else {
+      setError(false);
+      return;
+    }
+
   };
 
 
@@ -43,24 +55,6 @@ function QuizPage() {
 
 
 
-  const getAnswer = () => {
-    let ans;
-    allOptions.forEach(
-      (inputEl) => {
-        if (inputEl.checked) {
-          ans = inputEl.value;
-          console.log('inputEl.checked:', inputEl.checked);
-          console.log('allOptions:', allOptions);
-
-
-        }
-      }
-    )
-    // console.log('ans:', ans);
-    return ans;
-  }
-
-
 
   return (
 
@@ -68,7 +62,7 @@ function QuizPage() {
       <header>
 
         <div id="scoreBox">
-          <span id="topScore">Score {score}</span>
+          <span id="topScore">Score {((100 / allQuestion.length) * score)}%</span>
           <span id="topMaxScore">Max Score {allQuestion.length}</span>
         </div>
 
@@ -96,7 +90,7 @@ loadQuestion() */}
       <div className="allOptions">
 
         <div className="optionRow">
-          <input className="option" type="radio" value="a" id="option1" name="option" onClick={() => { selectOption('a'); }} ></input>
+          <input className="option" type="radio" value="a" id="option1" name="option" onClick={() => { selectOption('a') }} ></input>
           <label className="lable" htmlFor="option1">  {allQuestion[questionIndex].a}</label>
         </div>
 
@@ -118,18 +112,45 @@ loadQuestion() */}
       </div>
 
       <div id="footer">
-        <button onClick={getAnswer}> </button>
+        {/* <button onClick={getAnswer}> </button> */}
         <div>
           <h1 className="result"> Result Will show</h1>
         </div>
+        {/* {allQuestion[questionIndex][selected] === allQuestion[questionIndex].correct ? "Correct Answer" : "Wrong answer" } */}
+        {error && <ErrorMessage>
+          allQuestion[questionIndex].correct === selected ? (
+          <span id="selectedQuizResult">
+            <p>Correct &#127881; !!</p>
 
-        <span id="selectedQuizResult">
-          <p>Correct &#127881; !!</p>
-        </span>
+          </span>
+          ) : (
+          <span id="selectedQuizResult">
+            <p>Wrong &#128148; !!</p>
+          </span>
+          )
 
-        <div className="nextBtn">
-          <button id='btn' onClick={nextQuestion}> Next Question</button>
-        </div>
+        </ErrorMessage>}
+        {/* {
+          allQuestion[questionIndex].correct === selected ? (
+            <span id="selectedQuizResult">
+              <p>Correct &#127881; !!</p>
+
+            </span>
+          ) : (
+            <span id="selectedQuizResult">
+              <p>Wrong &#128148; !!</p>
+            </span>
+          )
+        } */}
+
+        {questionIndex == allQuestion.length - 1 ? (
+          <button onClick={setQuizState('quizResult')} id="nextQuestion">
+            Finish Quiz
+          </button>
+        ) : (
+          <button id='btn' onClick={nextQuestion}>
+            Next Question
+          </button>)}
 
         <div className="progress">
           <div id="progressB" className="progress-bar " role="progressbar" aria-label="Example 20px high"
