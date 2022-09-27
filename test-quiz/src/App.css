@@ -1,38 +1,195 @@
 .App {
-  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(68 87 96);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.quiz {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+.mainBox {
+  background-color: rgb(255 255 255);
+  height: 65%;
+  width: 500px;
+  border: 2px solid rgb(255 255 255);
+  border-radius: 5px;
+  padding: 3px 30px;
+  box-shadow: 0 2px 6px 0 rgba(23, 23, 23, 0.32);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+
+#progressBar {
+  height: 4px;
+  width: 100%;
+}
+
+#scoreBox {
+  /* background-color: rgb(190, 212, 252); */
+  border-radius: 10px;
+  padding: 0px 3px;
+  margin-bottom: 2px;
+  font-size: 10px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-between;
+}
+
+#hQuestion {
+  margin-top: 5px;
+  font-size: 1.4rem;
+  margin-bottom: 0%;
+  margin-left: 5px;
+}
+
+#questionBox {
+  width: 100%;
+  font-size: 1rem;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+#questionB {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 550;
+  padding: 5px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.32);
+
+}
+
+.progress {
+  height: 3px
+}
+
+
+.optionRow {
+  font-size: large;
+  margin-bottom: 10px;
+
+  /* border: 1px solid rgba(23, 23, 23, 0.32);
+  border-radius: 5px; */
+  display: flex;
+  /* align-items: flex-start; */
+  align-content: center;
+  background-color: aquamarine;
+  border-radius: 6px;
+  transition: .3s;
+
+}
+
+.optionRow:hover {
+  cursor: pointer;
+  background-color: rgb(177, 204, 255);
+}
+
+.optionBtn {
+  border-radius: 5px;
+  border: none;
+  background-color: aquamarine;
+}
+
+.option101:active {
+  background-color: bisque;
+}
+
+.optionBtn:hover {
+  background-color: rgb(159, 176, 170);
+}
+
+
+.nextBtn {
+  font-size: large;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-end;
+  margin-bottom: 10px;
+
 }
 
-.App-link {
-  color: #61dafb;
+#btn {
+
+  width: 100%;
+  font-size: large;
+  outline: none;
+  border: 2px solid rgba(23, 23, 23, 0.32);
+  border-radius: 10px;
+  background-color: rgb(255 255 255);
+  cursor: pointer;
+  /* margin-bottom: 20px; */
+  transition: .3s;
+  /* display: none; */
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#btn:hover {
+
+  background-color: rgb(177, 204, 255);
+
+}
+
+
+#btn:active {
+
+  background-color: rgb(0, 89, 255);
+
+}
+
+
+#footer {
+
+  margin-top: 10px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+
+
+
+.progress {
+  height: 20px
+}
+
+#progressB {
+  font-size: 15px;
+
+}
+
+#progressBarRed {
+
+  background-color: rgba(255, 0, 0, 0.63);
+  font-size: 10px;
+
+}
+
+#progressMaxScore {
+
+  background-color: rgb(167, 167, 167);
+  font-size: 8px;
+
+}
+
+.result {
+  display: none;
+}
+
+.resultBtn {
+  display: none;
+
 }
