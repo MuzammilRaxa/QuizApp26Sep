@@ -1,11 +1,9 @@
 import '../App.css'
 import React from 'react'
 import { useContext } from 'react';
-import { useState } from 'react';
-import { ReactDOM } from 'react-dom';
+import { useState, useEffect } from 'react';
 import { QuizStateContext } from '../Helpers/Context';
 import { allQuestion } from '../Helpers/Questions';
-import ErrorMessage from '../Components/ErrorMessage/ErrorMessage';
 
 function QuizPage() {
 
@@ -23,29 +21,32 @@ function QuizPage() {
 
 
   const [selected, setSelected] = useState('');
-  const [error, setError] = useState(false);
+  const [allOptions, setAllOptions] = useState()
 
-
+  useEffect(() => {
+    let addCorrect = allQuestion[questionIndex].incorrect_answers.push(allQuestion.correct_answer);
+  })
 
   // console.log('consoleee', allQuestion[questionIndex].correct, 'selecteddd', selected)
+
 
 
   const selectOption = (option) => {
     setSelected(option);
 
-    if (allQuestion[questionIndex].correct === selected) {
-      setError(true);
-      return;
-    } else {
-      setError(false);
-      return;
-    }
+    // if (allQuestion[questionIndex].correct === selected) {
+    //   setError(true);
+    //   return;
+    // } else {
+    //   setError(false);
+    //   return;
+    // }
 
   };
 
 
   const nextQuestion = () => {
-    if (allQuestion[questionIndex].correct === selected) {
+    if (allQuestion[questionIndex].correct_answer === selected) {
       setScore(score + 1);
       setCorrect(correct++);
 
@@ -53,7 +54,7 @@ function QuizPage() {
     setQuestionIndex(questionIndex + 1);
   };
 
-
+  // console.log('allQuestion.map((e) =>', allQuestion.map((e) => { console.log(e) }))
 
 
   return (
@@ -70,44 +71,23 @@ function QuizPage() {
           <progress id="progressBar" value={0} max={100}></progress>
         </div>
 
-        {/* 
-const loadQuestion = () => {
 
-    if (quizIndex == totalQuiz) {
-        return endQuiz();
-    }
-}
-
-loadQuestion() */}
 
         <div id='questionBox'>
           <h1 id="hQuestion">Question: {questionIndex + 1}/{allQuestion.length}</h1>
-          <h2 id="questionB">{allQuestion[questionIndex].question}</h2>
+          <h2 id="questionB">{decodeURIComponent(allQuestion[questionIndex].question)}</h2>
         </div>
 
       </header>
 
       <div className="allOptions">
 
-        <div className="optionRow">
-          <input className="option" type="radio" value="a" id="option1" name="option" onClick={() => { selectOption('a') }} ></input>
-          <label className="lable" htmlFor="option1">  {allQuestion[questionIndex].a}</label>
-        </div>
-
-        <div className="optionRow">
-          <input className="option" type="radio" value="b" id="option2" name="option" onClick={() => { selectOption('b'); }}></input>
-          <label className="lable" htmlFor="option2"> {allQuestion[questionIndex].b} </label>
-        </div>
-
-        <div className="optionRow">
-          <input className="option " type="radio" value="c" id="option3" name="option" onClick={() => { selectOption('c'); }}></input>
-          <label className="lable" htmlFor="option3"> {allQuestion[questionIndex].c} </label>
-        </div>
-
-        <div className="optionRow">
-          <input className="option" type="radio" value="d" id="option4" name="option" onClick={() => { selectOption('d'); }} ></input>
-          <label className="lable" htmlFor="option4"> {allQuestion[questionIndex].d} </label>
-        </div>
+        {allQuestion[questionIndex].incorrect_answers.map((ansOption, numb) => (
+          <div className="optionRow">
+            <input className="option" type="radio" value="a" id="option1" name="option" onClick={() => { selectOption(ansOption) }} />
+            <label className="lable" htmlFor="option1">{decodeURIComponent(ansOption)}</label>
+          </div>
+        ))}
 
       </div>
 
@@ -116,34 +96,23 @@ loadQuestion() */}
         <div>
           <h1 className="result"> Result Will show</h1>
         </div>
-        {/* {allQuestion[questionIndex][selected] === allQuestion[questionIndex].correct ? "Correct Answer" : "Wrong answer" } */}
-        {error && <ErrorMessage>
-          allQuestion[questionIndex].correct === selected ? (
-          <span id="selectedQuizResult">
-            <p>Correct &#127881; !!</p>
 
-          </span>
-          ) : (
-          <span id="selectedQuizResult">
-            <p>Wrong &#128148; !!</p>
-          </span>
-          )
 
-        </ErrorMessage>}
-        {/* {
-          allQuestion[questionIndex].correct === selected ? (
+
+        {
+          selected && allQuestion[questionIndex].correct === selected ? (
             <span id="selectedQuizResult">
               <p>Correct &#127881; !!</p>
 
             </span>
-          ) : (
+          ) : selected && (
             <span id="selectedQuizResult">
               <p>Wrong &#128148; !!</p>
             </span>
           )
-        } */}
+        }
 
-        {questionIndex == allQuestion.length - 1 ? (
+        {questionIndex === allQuestion.length - 1 ? (
           <button onClick={setQuizState('quizResult')} id="nextQuestion">
             Finish Quiz
           </button>
