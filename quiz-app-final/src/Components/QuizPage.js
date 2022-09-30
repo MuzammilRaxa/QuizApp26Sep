@@ -17,13 +17,22 @@ function QuizPage() {
     setQuestionIndex, } =
     useContext(QuizStateContext);
 
-
   const [selected, setSelected] = useState('');
-
   const [allOptions, setAllOptions] = useState();
 
-  const isRadioSelected = (value): => setSelected === value;
-  const handleRadioClick = (e: React.ChangeEvent<HTMLInputElement>): void => setSelected(e.currentTarget.value)
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+
+      // Generate random number
+      var j = Math.floor(Math.random() * (i + 1));
+
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+
+    return array;
+  }
 
   const nextQuestion = () => {
     allQuestion[questionIndex].correct_answer === selected ? (
@@ -31,13 +40,11 @@ function QuizPage() {
     ) : (
       setIncorrect(incorrect + 1)
     )
-    setSelected('')
-    setQuestionIndex(questionIndex + 1)
-    console.log('selected' + selected)
+    setSelected()
 
-    console.log('questionIndex', questionIndex)
+    questionIndex === (allQuestion.length - 1) ? (setQuizState('quizResult')) : (
+      setQuestionIndex(questionIndex + 1))
   };
-  console.log('selected' + selected)
 
   const selectOption = (ansOption) => {
     setSelected(ansOption);
@@ -45,19 +52,17 @@ function QuizPage() {
 
   useEffect(() => {
     let compeleteArray = allQuestion[questionIndex].incorrect_answers.push(allQuestion[questionIndex].correct_answer);
-    setAllOptions(allQuestion[questionIndex].incorrect_answers)
-    console.log('setAllOptions:', allQuestion[questionIndex].incorrect_answers)
+    let mixArray = shuffleArray(allQuestion[questionIndex].incorrect_answers)
+    setAllOptions(mixArray)
   }, [questionIndex]);
 
-
-  console.log('selected' + selected)
 
   return (
     <div className="quiz">
       <header>
         <div id="scoreBox">
           <span id="topScore">Score {((100 / allQuestion.length) * correct)}%</span>
-          <span id="topMaxScore">Max Score {allQuestion.length}</span>
+          <span id="topMaxScore">Max Score {(100 - (100 / allQuestion.length) * incorrect)}%</span>
         </div>
 
         <div className="progress" style={{ height: '3px' }}>
@@ -65,17 +70,15 @@ function QuizPage() {
         </div>
 
         <div id='questionBox'>
-          <h1 id="hQuestion">Question: {questionIndex + 1}/{allQuestion.length}</h1>
+          <h1 id="hQuestion">Question: {questionIndex + 1} into {allQuestion.length}</h1>
           <h2 id="questionB">{decodeURIComponent(allQuestion[questionIndex].question)}</h2>
         </div>
       </header>
-
       <div className="allOptions">
-
         {
           allQuestion[questionIndex].incorrect_answers.map((ansOption) => (
             <div className="optionRow">
-              <input className="option" disabled={selected} type="radio" value={selected} id={ansOption} name="option" onClick={() => { isRadioSelected(ansOption) }} onChange={handleRadioClick} />
+              <input className="option" disabled={selected} type="radio" checked={selected === ansOption} value={selected} id={ansOption} name="option" onClick={() => { selectOption(ansOption) }} />
               <label className="lable" htmlFor={ansOption}>{decodeURIComponent(ansOption)}</label>
             </div>
           ))
@@ -84,10 +87,7 @@ function QuizPage() {
       </div>
 
       <div id="footer">
-        {/* <button onClick={getAnswer}> </button> */}
-        <div>
-          <h1 className="result"> Result Will show</h1>
-        </div>
+
         {
           selected && allQuestion[questionIndex].correct_answer === selected ? (
             <span id="selectedQuizResult">
@@ -100,17 +100,18 @@ function QuizPage() {
           )
         }
 
-        {/* {questionIndex === allQuestion.length - 1 ? (
-          <button disabled={!selected} onClick={setQuizState('quizResult')} id="nextQuestion">
+
+        {questionIndex == allQuestion.length - 1 ? (
+          <button id="btn" disabled={!selected} onClick={nextQuestion}>
             Finish Quiz
           </button>
         ) : (
           <button id='btn' disabled={!selected} onClick={nextQuestion}>
             Next Question
-          </button>)} */}
-        <button id='btn' disabled={!selected} onClick={nextQuestion}>
+          </button>)}
+        {/* <button id='btn' disabled={!selected} onClick={nextQuestion}>
           Next Question
-        </button>
+        </button> */}
 
         <div className="progress">
           <div id="progressB" className="progress-bar " role="progressbar" aria-label="Example 20px high"
@@ -118,23 +119,8 @@ function QuizPage() {
           <div id="progressBarRed" className="progress-bar " role="progressbar" aria-label="Example 20px high"
             style={{ width: `${(100 / allQuestion.length) * incorrect}%` }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Less{((100 / allQuestion.length) * incorrect)}%</div>
           <div id="progressMaxScore" className="progress-bar " role="progressbar" aria-label="Example 20px high"
-            style={{ width: `${(100 / allQuestion.length) * (0.4)}%` }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Max{`${(100 - (100 / allQuestion.length) * incorrect)}%Max`}</div>
+            style={{ width: `${(100 / allQuestion.length) * (0.4)}%` }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Max{`${(100 - (100 / allQuestion.length) * incorrect)}%score`}</div>
         </div>
-
-        {/* <div className="progress">
-          <div id="progressB" className="progress-bar " role="progressbar" aria-label="Example 20px high"
-            style={{ width: ' 0%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">score{(allQuestion.length / allQuestion[questionIndex].correct) * 100}%</div>
-          <div id="progressBarRed" className="progress-bar " role="progressbar" aria-label="Example 20px high"
-            style={{ width: '0%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Less{allQuestion[questionIndex].length - correct}</div>
-          <div id="progressMaxScore" className="progress-bar " role="progressbar" aria-label="Example 20px high"
-            style={{ width: ' 0%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Max{ }</div>
-        </div> */}
-
-        {/* <button
-          className='resultBtn'
-          onClick={nextQuestion}>
-          Submit All Quiz goto End
-        </button> */}
 
       </div>
 
