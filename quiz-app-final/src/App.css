@@ -18,7 +18,7 @@
 
 .mainBox {
   background-color: rgb(255 255 255);
-  height: 65%;
+  height: 70%;
   width: 500px;
   border: 2px solid rgb(255 255 255);
   border-radius: 5px;
@@ -47,26 +47,72 @@
   justify-content: space-between;
 }
 
+#questionDetails {
+  display: inline-block;
+  zoom: 1
+}
+
+#questionDetails {
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 #hQuestion {
-  margin-top: 5px;
   font-size: 1.4rem;
   margin-bottom: 0%;
-  margin-left: 8px;
+}
+
+#categoryQuestion {
+  margin: 0% !important;
+  margin: 0%;
+  padding: 0%;
+  font-size: 12px;
+  color: rgb(93, 107, 114);
+}
+
+
+.iconArray {
+  margin-top: 0%;
+  padding: 0%;
+}
+
+#iconBox {
+  padding: 0%;
+  margin-top: 0%;
+  margin-left: 10px;
+
+}
+
+.iconS {
+  margin: 0%;
+  padding: 0%;
+  height: 15px;
+  color: gray;
+}
+
+.iconColor {
+  color: beige;
+  fill: bisque;
 }
 
 #questionBox {
-  width: 100%;
-  font-size: 1rem;
   padding: 5px;
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
 }
 
 #questionB {
   width: 100%;
   font-size: 1.2rem;
+  margin-top: 2%;
+  padding-left: 5px;
   font-weight: 500;
-  padding: 5px;
-  margin-bottom: 20px;
   border-bottom: 1px solid rgba(23, 23, 23, 0.32);
   line-height: 24px;
 }
@@ -90,7 +136,7 @@
 
 .optionRow {
   font-size: large;
-  margin-bottom: 10px;
+  margin-bottom: 2%;
 
   /* border: 1px solid rgba(23, 23, 23, 0.32);
   border-radius: 5px; */
@@ -111,7 +157,7 @@
   background-color: rgb(177, 204, 255);
 }
 
-.optionBtn {
+/* .optionBtn {
   border-radius: 5px;
   border: none;
   background-color: aquamarine;
@@ -120,7 +166,7 @@
 
 .optionBtn:hover {
   background-color: rgb(159, 176, 170);
-}
+} */
 
 
 .nextBtn {
@@ -139,7 +185,7 @@
   border-radius: 10px;
   background-color: rgb(255 255 255);
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 1.5%;
   transition: .3s;
   /* display: none; */
 }
