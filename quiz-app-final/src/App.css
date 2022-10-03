@@ -28,8 +28,36 @@
   flex-direction: column;
 }
 
+.formText {
+  margin: 0px;
+}
 
+.inputField {
+  border: 2px solid rgb(68 87 96);
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
 
+.btn {
+  border: 2px solid rgb(68 87 96);
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 5px;
+  background-color: rgb(170, 231, 255);
+}
+
+.emailForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+}
+
+.formBox {
+  display: block;
+}
 
 #progressBar {
   height: 4px;
@@ -192,12 +220,13 @@
 
 #btn:hover {
   background-color: rgb(177, 204, 255);
+  cursor: pointer;
 }
 
 
 #btn:active {
 
-  background-color: rgb(0, 89, 255);
+  background-color: rgb(96, 151, 255);
 
 }
 
@@ -219,7 +248,7 @@
 }
 
 #progressB {
-  font-size: 15px;
+  font-size: 12px;
 
 }
 
@@ -231,7 +260,6 @@
 }
 
 #progressMaxScore {
-
   background-color: rgb(167, 167, 167);
   font-size: 8px;
 
@@ -258,15 +286,17 @@
 .endResult {
   font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 15px;
   padding: 10px;
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
-  border: 3px solid rgb(68 87 96);
+  justify-content: center;
   border-radius: 10px;
 }
 
+h2 {
+  margin-bottom: 0%;
+}
 
 .result {
   height: 100%;
@@ -280,16 +310,75 @@
 
 .resultBox {
   box-sizing: border-box;
-  height: 100%;
+  height: 80%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
+  justify-content: space-evenly;
+  background-color: lightgrey;
+  border-radius: 10px;
+  border: 3px solid rgb(68 87 96);
+
 }
 
 .emojiSpace {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+#correctColor {
+  background-color: aquamarine;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 10px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgb(68 87 96);
+  border-radius: 10px;
+}
+
+#noCorrectColor {
+  background-color: red;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 10px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgb(68 87 96);
+  border-radius: 10px;
+  text-align: center;
+}
+
+#incorrect {
+  background-color: red;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 10px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgb(68 87 96);
+  border-radius: 10px;
+}
+
+#noIncorrect {
+  background-color: lightseagreen;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 10px;
+  width: 90%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgb(68 87 96);
+  border-radius: 10px;
 }
