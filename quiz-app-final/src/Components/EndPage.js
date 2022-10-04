@@ -4,7 +4,7 @@ import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
 
 function EndPage() {
-  const { correct, setCorrect, setScore, incorrect, setIncorrect, setQuizState, setQuestionIndex, } = useContext(QuizStateContext);
+  const { correct, setCorrect, setScore, incorrect, setIncorrect, setquizPageState, setQuestionIndex, } = useContext(QuizStateContext);
 
 
   const playAgain = () => {
@@ -12,7 +12,7 @@ function EndPage() {
     setCorrect(0)
     setQuestionIndex(0)
     setIncorrect(0)
-    setQuizState('menu')
+    setquizPageState('menu')
   }
 
   return (

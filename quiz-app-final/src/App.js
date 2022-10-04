@@ -3,21 +3,39 @@ import QuizPage from './Components/QuizPage';
 import StartPage from './Components/StartPage';
 import EndPage from './Components/EndPage';
 import { useState } from 'react';
-import { ContextProvider } from './Helpers/Context'
+import { QuizStateContext } from './Helpers/Context'
 
-function App({ children }) {
+function App() {
+  const [quizPageState, setquizPageState] = useState('menu');
+  const [score, setScore] = useState(0);
+  const [correct, setCorrect] = useState(0);
+  const [incorrect, setIncorrect] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
 
-  const [quizState] = useState("menu");
 
   return (
     <div className="App">
       <div className='mainBox'>
 
-        <ContextProvider>
-          {quizState === 'menu' && <StartPage />}
-          {quizState === 'startQuiz' && <QuizPage />}
-          {quizState === 'quizResult' && <EndPage />}
-        </ContextProvider>
+        <QuizStateContext.Provider
+          value={{
+            quizPageState,
+            setquizPageState,
+            score,
+            setScore,
+            correct,
+            setCorrect,
+            incorrect,
+            setIncorrect,
+            questionIndex,
+            setQuestionIndex,
+          }} >
+
+          {quizPageState === 'menu' && <StartPage />}
+          {quizPageState === 'startQuiz' && <QuizPage />}
+          {quizPageState === 'quizResult' && <EndPage />}
+
+        </QuizStateContext.Provider>
 
 
       </div>

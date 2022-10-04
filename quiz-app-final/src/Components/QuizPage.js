@@ -7,7 +7,7 @@ import "../App.css";
 
 function QuizPage() {
   let {
-    setQuizState,
+    setquizPageState,
     correct,
     setCorrect,
     incorrect,
@@ -16,26 +16,24 @@ function QuizPage() {
     setQuestionIndex,
   } = useContext(QuizStateContext);
 
-
-
-  console.log('setQuizState',
-    setQuizState,
-    'correct',
-    correct,
-    'setCorrect',
-    setCorrect,
-    'incorrect',
-    incorrect,
-    'setIncorrect',
-    setIncorrect,
-    'questionIndex',
-    questionIndex,
-    'setQuestionIndex',
-    setQuestionIndex,
-  )
+  // console.log('setquizPageState',
+  //   setquizPageState,
+  //   'correct',
+  //   correct,
+  //   'setCorrect',
+  //   setCorrect,
+  //   'incorrect',
+  //   incorrect,
+  //   'setIncorrect',
+  //   setIncorrect,
+  //   'questionIndex',
+  //   questionIndex,
+  //   'setQuestionIndex',
+  //   setQuestionIndex,
+  // )
 
   const [selected, setSelected] = useState("");
-  const [allOptions, setAllOptions] = useState("");
+  const [, setAllOptions] = useState("");
 
   let quizLevel = 0;
 
@@ -50,11 +48,11 @@ function QuizPage() {
   const Star = ({ quizLevel }) => {
     let emptyStar = 0;
 
-    if (quizLevel == 1) {
+    if (quizLevel === 1) {
       emptyStar = 4;
-    } else if (quizLevel == 2) {
+    } else if (quizLevel === 2) {
       emptyStar = 3;
-    } else if (quizLevel == 3) {
+    } else if (quizLevel === 3) {
       emptyStar = 2;
     }
 
@@ -110,7 +108,7 @@ function QuizPage() {
     setSelected("");
 
     questionIndex === allQuestion.length - 1
-      ? setQuizState("quizResult")
+      ? setquizPageState("quizResult")
       : setQuestionIndex(questionIndex + 1);
   };
 
@@ -191,7 +189,7 @@ function QuizPage() {
             )
           )}
 
-          {questionIndex == allQuestion.length - 1 ? (
+          {questionIndex === allQuestion.length - 1 ? (
             <button id="btn" disabled={!selected} onClick={nextQuestion}>
               Finish Quiz
             </button>
@@ -201,9 +199,7 @@ function QuizPage() {
             </button>
           )}
         </div>
-        {/* <button id='btn' disabled={!selected} onClick={nextQuestion}>
-          Next Question
-        </button> */}
+
         <div id="scoreBox">
           <span id="topScore">
             Score{(100 / allQuestion.length) * correct}%
