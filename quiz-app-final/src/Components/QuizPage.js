@@ -16,32 +16,16 @@ function QuizPage() {
     setQuestionIndex,
   } = useContext(QuizStateContext);
 
-  // console.log('setquizPageState',
-  //   setquizPageState,
-  //   'correct',
-  //   correct,
-  //   'setCorrect',
-  //   setCorrect,
-  //   'incorrect',
-  //   incorrect,
-  //   'setIncorrect',
-  //   setIncorrect,
-  //   'questionIndex',
-  //   questionIndex,
-  //   'setQuestionIndex',
-  //   setQuestionIndex,
-  // )
-
   const [selected, setSelected] = useState("");
   const [, setAllOptions] = useState("");
 
   let quizLevel = 0;
 
-  if (allQuestion[questionIndex]?.difficulty === "easy") {
+  if (allQuestion[questionIndex].difficulty === "easy") {
     quizLevel = 1;
-  } else if (allQuestion[questionIndex]?.difficulty === "medium") {
+  } else if (allQuestion[questionIndex].difficulty === "medium") {
     quizLevel = 2;
-  } else if (allQuestion[questionIndex]?.difficulty === "hard") {
+  } else if (allQuestion[questionIndex].difficulty === "hard") {
     quizLevel = 3;
   }
 
@@ -117,7 +101,6 @@ function QuizPage() {
   };
 
   useEffect(() => {
-    console.log('allQuestion[questionIndex]', allQuestion[questionIndex].incorrect_answers <= 4)
     if (allQuestion[questionIndex].incorrect_answers.length < 4) {
       allQuestion[questionIndex].incorrect_answers.push(
         allQuestion[questionIndex].correct_answer
@@ -156,19 +139,20 @@ function QuizPage() {
       <div className="allOptions">
         {allQuestion[questionIndex].incorrect_answers.map((ansOption) => (
           <div className="optionRow">
-            <input
-              className="option"
-              disabled={selected}
-              type="radio"
-              checked={selected === ansOption}
-              value={selected}
-              id={ansOption}
-              name="option"
-              onClick={() => {
-                selectOption(ansOption);
-              }}
-            />
+
             <label className="lable" htmlFor={ansOption}>
+              <input
+                type="radio"
+                className="option"
+                disabled={selected}
+                checked={selected === ansOption}
+                value={selected}
+                id={ansOption}
+                name="option"
+                onClick={() => {
+                  selectOption(ansOption);
+                }}
+              />
               {decodeURIComponent(ansOption)}
             </label>
           </div>
@@ -177,7 +161,8 @@ function QuizPage() {
 
       <div id="footer">
         <div className="btnResult">
-          {selected && allQuestion[questionIndex].correct_answer === selected ? (
+          {selected &&
+            allQuestion[questionIndex].correct_answer === selected ? (
             <span id="selectedQuizResult">
               <p>Correct &#127881; !!</p>
             </span>
@@ -215,7 +200,6 @@ function QuizPage() {
             role="progressbar"
             aria-label="Example 20px high"
             style={{ width: `${(100 / allQuestion.length) * correct}%` }}
-
           >
             score{(100 / allQuestion.length) * correct}%
           </div>
