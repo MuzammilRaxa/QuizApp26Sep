@@ -1,9 +1,9 @@
-import "../App.css";
 import React from "react";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
+import "../App.css";
 
 function QuizPage() {
   let {
@@ -16,10 +16,27 @@ function QuizPage() {
     setQuestionIndex,
   } = useContext(QuizStateContext);
 
+
+
+  console.log('setQuizState',
+    setQuizState,
+    'correct',
+    correct,
+    'setCorrect',
+    setCorrect,
+    'incorrect',
+    incorrect,
+    'setIncorrect',
+    setIncorrect,
+    'questionIndex',
+    questionIndex,
+    'setQuestionIndex',
+    setQuestionIndex,
+  )
+
   const [selected, setSelected] = useState("");
   const [allOptions, setAllOptions] = useState("");
 
-  console.log("allOptions", allOptions);
   let quizLevel = 0;
 
   if (allQuestion[questionIndex]?.difficulty === "easy") {
@@ -45,7 +62,7 @@ function QuizPage() {
       <div className="iconArray">
         {Array(quizLevel)
           .fill()
-          .map((val, index) => (
+          .map((_, index) => (
             <span key={index}>
               <svg
                 className="iconS"
@@ -115,15 +132,6 @@ function QuizPage() {
   return (
     <div className="quiz">
       <header>
-        <div id="scoreBox">
-          <span id="topScore">
-            Score {(100 / allQuestion.length) * correct}%
-          </span>
-          <span id="topMaxScore">
-            Max Score {100 - (100 / allQuestion.length) * incorrect}%
-          </span>
-        </div>
-
         <div className="progress" style={{ height: "3px" }}>
           <progress
             id="progressBar"
@@ -170,31 +178,40 @@ function QuizPage() {
       </div>
 
       <div id="footer">
-        {selected && allQuestion[questionIndex].correct_answer === selected ? (
-          <span id="selectedQuizResult">
-            <p>Correct &#127881; !!</p>
-          </span>
-        ) : (
-          selected && (
+        <div className="btnResult">
+          {selected && allQuestion[questionIndex].correct_answer === selected ? (
             <span id="selectedQuizResult">
-              <p>Wrong &#128148; !!</p>
+              <p>Correct &#127881; !!</p>
             </span>
-          )
-        )}
+          ) : (
+            selected && (
+              <span id="selectedQuizResult">
+                <p>Wrong &#128148; !!</p>
+              </span>
+            )
+          )}
 
-        {questionIndex == allQuestion.length - 1 ? (
-          <button id="btn" disabled={!selected} onClick={nextQuestion}>
-            Finish Quiz
-          </button>
-        ) : (
-          <button id="btn" disabled={!selected} onClick={nextQuestion}>
-            Next Question
-          </button>
-        )}
+          {questionIndex == allQuestion.length - 1 ? (
+            <button id="btn" disabled={!selected} onClick={nextQuestion}>
+              Finish Quiz
+            </button>
+          ) : (
+            <button id="btn" disabled={!selected} onClick={nextQuestion}>
+              Next Question
+            </button>
+          )}
+        </div>
         {/* <button id='btn' disabled={!selected} onClick={nextQuestion}>
           Next Question
         </button> */}
-
+        <div id="scoreBox">
+          <span id="topScore">
+            Score{(100 / allQuestion.length) * correct}%
+          </span>
+          <span id="topMaxScore">
+            Max Score {100 - (100 / allQuestion.length) * incorrect}%
+          </span>
+        </div>
         <div className="progress">
           <div
             id="progressB"
@@ -202,12 +219,9 @@ function QuizPage() {
             role="progressbar"
             aria-label="Example 20px high"
             style={{ width: `${(100 / allQuestion.length) * correct}%` }}
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
+
           >
-            {" "}
-            score {(100 / allQuestion.length) * correct}%
+            score{(100 / allQuestion.length) * correct}%
           </div>
           <div
             id="progressBarRed"
