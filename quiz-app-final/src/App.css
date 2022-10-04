@@ -212,6 +212,7 @@
   border: 2px solid rgba(23, 23, 23, 0.32);
   border-radius: 10px;
   background-color: rgb(255 255 255);
+  color: rgb(68 87 96);
   cursor: pointer;
   margin-bottom: 1.5%;
   transition: .3s;
@@ -286,7 +287,6 @@
 .endResult {
   font-size: 1.3rem;
   font-weight: bold;
-  padding: 10px;
   width: 90%;
   display: flex;
   align-items: center;

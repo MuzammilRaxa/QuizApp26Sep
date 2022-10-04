@@ -52,8 +52,7 @@ function EndPage() {
           </div>
         ) : (
           <div id="noIncorrect">
-            <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>
-              Congratulation!! Your incorrect is {incorrect} &#128077;
+            <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>Congratulation!! Your incorrect is{incorrect}&#128077;
             </h2>
           </div>
         )}
