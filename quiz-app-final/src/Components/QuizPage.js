@@ -111,36 +111,57 @@ function QuizPage() {
   }, [questionIndex]);
 
   return (
-    <div className="quiz">
-      <header>
-        <div className="progress" style={{ height: "3px" }}>
-          <progress
-            id="progressBar"
-            value={`${(100 / allQuestion.length) * questionIndex}`}
-            max={100}
-          ></progress>
-        </div>
-        <div id="questionBox">
-          <span id="questionDetails">
+    <div className="quizPage">
+      <div
+        className="progress progressBarTop "
+        role="progressbar"
+        style={{
+          width: `${(100 / allQuestion.length) * questionIndex}%`,
+        }}
+        aria-valuenow="75"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+      {/* <progress
+        style={{ backgroundColor: "black" }}
+        className="progressBarTop"
+        value={`${(100 / allQuestion.length) * questionIndex}`}
+        max={100}
+      ></progress> */}
+
+      <div className="quizContent">
+        <div className="questionBox">
+          <span className="questionDetails">
             <span id="hQuestion">
               Question: {questionIndex + 1} into {allQuestion.length}
             </span>
-            <span id="categoryQuestion">
-              Category:{" "}
+            <span className="categoryAndStar">
+              Category:
               {decodeURIComponent(allQuestion[questionIndex].category)}
             </span>
-            <span id="iconBox">{Star({ quizLevel })}</span>
+            <span className="categoryAndStar">{Star({ quizLevel })}</span>
           </span>
-          <h2 id="questionB">
+          <h2 className="questionB">
             {decodeURIComponent(allQuestion[questionIndex].question)}
           </h2>
         </div>
-      </header>
-      <div className="allOptions">
-        {allQuestion[questionIndex].incorrect_answers.map((ansOption) => (
-          <div className="optionRow">
 
-            <label className="lable" htmlFor={ansOption}>
+        <div className="allOptions">
+          {allQuestion[questionIndex].incorrect_answers.map((ansOption) => (
+            <div className="optionRow">
+              <button
+                className={`option ${selected === ansOption ? "selectedOption" : ""
+                  }`}
+                disabled={selected}
+                checked={selected === ansOption}
+                value={selected}
+                onClick={() => {
+                  selectOption(ansOption);
+                }}
+              >
+                {decodeURIComponent(ansOption)}
+              </button>
+              {/* <label className="lable" htmlFor={ansOption}>
               <input
                 type="radio"
                 className="option"
@@ -154,12 +175,10 @@ function QuizPage() {
                 }}
               />
               {decodeURIComponent(ansOption)}
-            </label>
-          </div>
-        ))}
-      </div>
-
-      <div id="footer">
+            </label> */}
+            </div>
+          ))}
+        </div>
         <div className="btnResult">
           {selected &&
             allQuestion[questionIndex].correct_answer === selected ? (
@@ -185,50 +204,50 @@ function QuizPage() {
           )}
         </div>
 
-        <div id="scoreBox">
-          <span id="topScore">
-            Score{(100 / allQuestion.length) * correct}%
-          </span>
-          <span id="topMaxScore">
-            Max Score {100 - (100 / allQuestion.length) * incorrect}%
-          </span>
-        </div>
-        <div className="progress">
-          <div
-            id="progressB"
-            className="progress-bar "
-            role="progressbar"
-            aria-label="Example 20px high"
-            style={{ width: `${(100 / allQuestion.length) * correct}%` }}
-          >
-            score{(100 / allQuestion.length) * correct}%
+        <div className="footer">
+          <div className="scoreBox">
+            <span>Score{(100 / allQuestion.length) * correct}%</span>
+            <span>
+              Max Score {100 - (100 / allQuestion.length) * incorrect}%
+            </span>
           </div>
-          <div
-            id="progressBarRed"
-            className="progress-bar "
-            role="progressbar"
-            aria-label="Example 20px high"
-            style={{ width: `${(100 / allQuestion.length) * incorrect}%` }}
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            Less{(100 / allQuestion.length) * incorrect}%
-          </div>
-          <div
-            id="progressMaxScore"
-            className="progress-bar "
-            role="progressbar"
-            aria-label="Example 20px high"
-            style={{
-              width: `${100 - (100 / allQuestion.length) * incorrect}%`,
-            }}
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            You Can Get Max
-            {`${100 - (100 / allQuestion.length) * incorrect}%score`}
+          <div className="progressBarBox">
+            <div className="progress">
+              <div
+                className="progress-bar scoreProgressBar"
+                role="progressbar"
+                aria-label="Example 20px high"
+                style={{ width: `${(100 / allQuestion.length) * correct}%` }}
+              >
+                {/* score{(100 / allQuestion.length) * correct}% */}
+              </div>
+              <div
+                className="progress-bar lessProgressBar"
+                role="progressbar"
+                aria-label="Example 20px high"
+                style={{ width: `${(100 / allQuestion.length) * incorrect}%` }}
+                aria-valuenow="25"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+              <div
+                className="progress progressBarBackGround"
+                style={{
+                  width: `${100 - (100 / allQuestion.length) * incorrect}%`,
+                }}
+              >
+                <div
+                  className="progress-bar progressMaxScore "
+                  role="progressbar"
+                  style={{
+                    width: `${100 - (100 / allQuestion.length) * incorrect}%`,
+                  }}
+                  aria-valuenow="75"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
