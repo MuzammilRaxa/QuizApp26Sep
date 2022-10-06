@@ -32,21 +32,21 @@ function EndPage() {
         {correctScore > 0 ? (
           <div id="correctColor" className="emojiSpace">
             <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>
-              Your CorrectScore answer is {correctScore} &#128076;
+              Your Correct answer is {correctScore} &#128076;
             </h2>
             <span style={{ fontSize: "50px" }}> &#128150;</span>
           </div>
         ) : (
           <div id="noCorrectColor" >
             <h2 className="endResult" style={{ backgroundColor: "pink" }}>
-              Sad!! CorrectScore answer is {correctScore} &#128148;
+              Sad!! Correct answer is {correctScore} &#128148;
             </h2>
           </div>
         )}
         {incorrectScore > 0 ? (
           <div id="incorrectScore" className="emojiSpace">
             <h2 className="endResult" style={{ backgroundColor: "red" }}>
-              Your incorrectScore is {incorrectScore} &#128148;
+              Your Incorrect is {incorrectScore} &#128148;
             </h2>
             <span style={{ fontSize: "50px" }}>&#128533;</span>
           </div>

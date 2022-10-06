@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { QuizStateContext } from "../Helpers/Context";
+import React from "react";
 
 
 

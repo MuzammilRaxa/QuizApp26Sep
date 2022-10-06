@@ -30,6 +30,7 @@ function QuizPage() {
   } else if (allQuestion[questionNumber].difficulty === "hard") {
     quizLevel = 3;
   }
+  
 
   function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {

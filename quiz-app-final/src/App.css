@@ -124,12 +124,13 @@ progress[value]::-webkit-progress-bar {
 }
 
 .startPage {
+  margin: 0% auto;
   width: 80%;
   height: 50%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   text-align: center;
 }
 
@@ -194,7 +195,6 @@ progress[value]::-webkit-progress-bar {
 .btn:hover {
   background-color: rgb(177, 204, 255);
   transition: 0.3s;
-
   cursor: pointer;
 }
 
@@ -332,7 +332,7 @@ h2 {
   text-align: center;
 }
 
-#incorrect {
+#incorrectScore {
   background-color: red;
   font-size: 1.3rem;
   font-weight: bold;
