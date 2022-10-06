@@ -1,16 +1,16 @@
 import './App.css';
-import QuizPage from './Components/QuizPage';
-import StartPage from './Components/StartPage';
-import EndPage from './Components/EndPage';
+import QuizPage from './Pages/QuizPage';
+import StartPage from './Pages/StartPage';
+import EndPage from './Pages/EndPage';
 import { useState } from 'react';
 import { QuizStateContext } from './Helpers/Context'
 
 function App() {
   const [quizPageState, setquizPageState] = useState('menu');
   const [score, setScore] = useState(0);
-  const [correct, setCorrect] = useState(0);
-  const [incorrect, setIncorrect] = useState(0);
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const [correctScore, setCorrectScore] = useState(0);
+  const [incorrectScore, setIncorrectScore] = useState(0);
+  const [questionNumber, setQuestionNumber] = useState(0);
 
 
   return (
@@ -23,12 +23,12 @@ function App() {
             setquizPageState,
             score,
             setScore,
-            correct,
-            setCorrect,
-            incorrect,
-            setIncorrect,
-            questionIndex,
-            setQuestionIndex,
+            correctScore,
+            setCorrectScore,
+            incorrectScore,
+            setIncorrectScore,
+            questionNumber,
+            setQuestionNumber,
           }} >
 
           {quizPageState === 'menu' && <StartPage />}

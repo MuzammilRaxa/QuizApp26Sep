@@ -4,14 +4,14 @@ import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
 
 function EndPage() {
-  const { correct, setCorrect, setScore, incorrect, setIncorrect, setquizPageState, setQuestionIndex, } = useContext(QuizStateContext);
+  const { correctScore, setCorrectScore, setScore, incorrectScore, setIncorrectScore, setquizPageState, setQuestionNumber, } = useContext(QuizStateContext);
 
 
   const playAgain = () => {
     setScore(0)
-    setCorrect(0)
-    setQuestionIndex(0)
-    setIncorrect(0)
+    setCorrectScore(0)
+    setQuestionNumber(0)
+    setIncorrectScore(0)
     setquizPageState('menu')
   }
 
@@ -22,42 +22,42 @@ function EndPage() {
       <div className="resultBox">
 
         <h2>
-          Success rate is {correct} into {allQuestion.length}
+          Success rate is {correctScore} into {allQuestion.length}
         </h2>
 
         <h2 className="endResult" style={{ backgroundColor: "#b1ccff", border: '3px solid rgb(68 87 96)' }}>
-          Score is {(100 / allQuestion.length) * correct}% into 100%{" "}
+          Score is {(100 / allQuestion.length) * correctScore}% into 100%{" "}
         </h2>
 
-        {correct > 0 ? (
+        {correctScore > 0 ? (
           <div id="correctColor" className="emojiSpace">
             <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>
-              Your Correct answer is {correct} &#128076;
+              Your CorrectScore answer is {correctScore} &#128076;
             </h2>
             <span style={{ fontSize: "50px" }}> &#128150;</span>
           </div>
         ) : (
           <div id="noCorrectColor" >
             <h2 className="endResult" style={{ backgroundColor: "pink" }}>
-              Sad!! Correct answer is {correct} &#128148;
+              Sad!! CorrectScore answer is {correctScore} &#128148;
             </h2>
           </div>
         )}
-        {incorrect > 0 ? (
-          <div id="incorrect" className="emojiSpace">
+        {incorrectScore > 0 ? (
+          <div id="incorrectScore" className="emojiSpace">
             <h2 className="endResult" style={{ backgroundColor: "red" }}>
-              Your incorrect is {incorrect} &#128148;
+              Your incorrectScore is {incorrectScore} &#128148;
             </h2>
             <span style={{ fontSize: "50px" }}>&#128533;</span>
           </div>
         ) : (
           <div id="noIncorrect">
-            <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>Congratulation!! Your incorrect is{incorrect}&#128077;
+            <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>Congratulation!! Your incorrectScore is{incorrectScore}&#128077;
             </h2>
           </div>
         )}
       </div>
-      <button id="btn" onClick={playAgain}>Play Again</button>
+      <button className="btn" onClick={playAgain}>Play Again</button>
     </div>
   );
 }

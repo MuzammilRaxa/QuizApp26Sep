@@ -31,8 +31,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 70px 30px 70px;
+  padding: 20px 70px 30px 70px;
 }
+
 
 
 .progressBarTop {
@@ -61,7 +62,12 @@ progress[value]::-webkit-progress-bar {
   margin-bottom: 5px;
 }
 
-
+.topFlexBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50%;
+}
 
 
 .questionBox {
@@ -86,7 +92,7 @@ progress[value]::-webkit-progress-bar {
 }
 
 
-.categoryAndStar {
+.starContainer {
   font-size: 12px;
   color: rgb(93, 107, 114);
 }
@@ -105,10 +111,10 @@ progress[value]::-webkit-progress-bar {
 
 
 
-.questionB {
+.questionText {
   width: 100%;
-  margin-top: 30px;
-  font-size: 1.1rem;
+  margin-top: 10px;
+  font-size: 1rem;
   font-weight: 550;
   line-height: 24px;
 }
@@ -118,23 +124,30 @@ progress[value]::-webkit-progress-bar {
 }
 
 .startPage {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 }
 
 .allOptions {
+  height: 40%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0%;
+  padding: 0%;
 }
 
 .optionRow {
-  width: 160px;
-  margin: 0px 44px 30px 0px;
-
+  height: 35px;
+  width: 45%;
+  padding: 0%;
+  margin: 0%;
 }
 
 .selectedOption {
@@ -144,15 +157,16 @@ progress[value]::-webkit-progress-bar {
 }
 
 .option {
-  font-weight: bold;
+  font-size: 0.80rem;
+  font-weight: 500;
+  line-height: 14px;
   height: 100%;
   width: 100%;
   border: solid 2px rgb(167, 167, 167);
   border-radius: 5px;
-  color: rgb(167, 167, 167);
+  color: rgb(131, 131, 131);
   background-color: whitesmoke;
   transition: 0.3s;
-
 }
 
 .option:hover {
@@ -160,7 +174,12 @@ progress[value]::-webkit-progress-bar {
   background-color: rgb(177, 204, 255);
 }
 
-#btn {
+
+.hideBtn {
+  display: none;
+}
+
+.btn {
   width: 40%;
   font-size: large;
   border-radius: 5px;
@@ -168,24 +187,32 @@ progress[value]::-webkit-progress-bar {
   background-color: whitesmoke;
   cursor: pointer;
   padding: 2px;
-  margin-bottom: 1.5%;
   transition: 0.3s;
-  /* display: none; */
+  display: block;
 }
 
-#btn:hover {
+.btn:hover {
   background-color: rgb(177, 204, 255);
   transition: 0.3s;
 
   cursor: pointer;
 }
 
-#btn:active {
+.btn:active {
   background-color: rgb(137, 167, 224);
   transition: 0.3s;
 
 }
 
+
+
+.btnResult {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
 
 .scoreBox {
   font-size: 13px;
@@ -203,7 +230,6 @@ progress[value]::-webkit-progress-bar {
 
 .progress {
   height: 25px;
-
 }
 
 
@@ -230,18 +256,10 @@ progress[value]::-webkit-progress-bar {
 }
 
 #selectedQuizResult {
-  font-size: 1.4rem;
-  margin-left: 7px;
-}
-
-
-.hResult {
-  margin-top: 5px;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   font-weight: bold;
-  margin-bottom: 10px;
-  margin-left: 8px;
 }
+
 
 .endResult {
   font-size: 1.3rem;
@@ -341,9 +359,100 @@ h2 {
   border-radius: 10px;
 }
 
-.btnResult {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+
+
+@media only screen and (max-width: 560px) {
+  .mainBox {
+    background-color: rgb(158, 194, 73);
+  }
+
+  .quizContent {
+    padding: 5px 10px 30px 10px;
+  }
+
+
+  .questionText {
+    margin-top: 20px;
+    font-size: 1rem;
+
+  }
+
+  .optionRow {
+    height: 35px;
+    width: 48%;
+    padding: 0%;
+    margin: 0%;
+  }
+
+  .btn {
+    width: 60%;
+    font-size: large;
+    border-radius: 5px;
+  }
+
+
+}
+
+
+@media only screen and (max-width: 400px) {
+  .mainBox {
+    background-color: rgb(158, 194, 73);
+  }
+
+  .quizContent {
+    padding: 5px 10px 30px 10px;
+  }
+
+
+  .questionText {
+    margin-top: 20px;
+    font-size: 1rem;
+
+  }
+
+  .optionRow {
+    height: 35px;
+    width: 48%;
+    padding: 0%;
+    margin: 0%;
+  }
+
+  .btn {
+    width: 60%;
+    font-size: large;
+    border-radius: 5px;
+  }
+
+
+}
+
+
+
+
+@media only screen and (max-width: 300px) {
+  .mainBox {
+    background-color: rgb(189, 238, 76);
+  }
+
+  .optionRow {
+    height: 35px;
+    width: 60%;
+    padding: 0%;
+    margin-bottom: 15px;
+  }
+
+
+  .btnResult {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 80%;
+    font-size: large;
+    border-radius: 5px;
+  }
 }
