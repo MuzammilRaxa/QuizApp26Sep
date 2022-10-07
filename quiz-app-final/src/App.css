@@ -7,7 +7,6 @@
   align-items: center;
 }
 
-
 .mainBox {
   margin: 0%;
   padding: 0%;
@@ -34,8 +33,6 @@
   padding: 20px 70px 30px 70px;
 }
 
-
-
 .progressBarTop {
   border-radius: 0% !important;
   margin: 0%;
@@ -50,9 +47,7 @@
 
 progress[value]::-webkit-progress-bar {
   background-color: rgb(255, 255, 255);
-
 }
-
 
 .inputField {
   border: 2px solid rgb(68 87 96);
@@ -68,7 +63,6 @@ progress[value]::-webkit-progress-bar {
   justify-content: space-between;
   height: 50%;
 }
-
 
 .questionBox {
   height: 150px;
@@ -91,7 +85,6 @@ progress[value]::-webkit-progress-bar {
   margin-bottom: 0%;
 }
 
-
 .starContainer {
   font-size: 12px;
   color: rgb(93, 107, 114);
@@ -108,8 +101,6 @@ progress[value]::-webkit-progress-bar {
   color: beige;
   fill: bisque;
 }
-
-
 
 .questionText {
   width: 100%;
@@ -158,7 +149,7 @@ progress[value]::-webkit-progress-bar {
 }
 
 .option {
-  font-size: 0.80rem;
+  font-size: 0.8rem;
   font-weight: 500;
   line-height: 14px;
   height: 100%;
@@ -174,7 +165,6 @@ progress[value]::-webkit-progress-bar {
   cursor: pointer;
   background-color: rgb(177, 204, 255);
 }
-
 
 .hideBtn {
   display: none;
@@ -201,10 +191,7 @@ progress[value]::-webkit-progress-bar {
 .btn:active {
   background-color: rgb(137, 167, 224);
   transition: 0.3s;
-
 }
-
-
 
 .btnResult {
   height: 200px;
@@ -224,9 +211,7 @@ progress[value]::-webkit-progress-bar {
 .progressBarBox {
   border: 1px solid #0e0e0e;
   border-radius: 7px;
-
 }
-
 
 .progress {
   height: 25px;
@@ -257,8 +242,6 @@ progress[value]::-webkit-progress-bar {
   border-radius: 6px !important;
 } */
 
-
-
 .scoreProgressBar {
   font-size: 12px;
   background-color: rgba(0, 0, 0, 0.89);
@@ -284,7 +267,6 @@ progress[value]::-webkit-progress-bar {
   font-size: 1.7rem;
   font-weight: bold;
 }
-
 
 .endResult {
   font-size: 1.3rem;
@@ -331,7 +313,7 @@ h2 {
 }
 
 #correctColor {
-  background-color: aquamarine;
+  background-color: rgb(132, 245, 147);
   font-size: 1.3rem;
   font-weight: bold;
   padding: 10px;
@@ -358,7 +340,7 @@ h2 {
 }
 
 #incorrectScore {
-  background-color: red;
+  background-color: rgb(255, 199, 199);
   font-size: 1.3rem;
   font-weight: bold;
   padding: 10px;
@@ -371,7 +353,7 @@ h2 {
 }
 
 #noIncorrect {
-  background-color: lightseagreen;
+  background-color: rgb(140, 206, 203);
   font-size: 1.3rem;
   font-weight: bold;
   padding: 10px;
@@ -384,22 +366,14 @@ h2 {
   border-radius: 5px;
 }
 
-
-
 @media only screen and (max-width: 560px) {
-  .mainBox {
-    background-color: rgb(158, 194, 73);
-  }
-
   .quizContent {
     padding: 5px 10px 30px 10px;
   }
 
-
   .questionText {
     margin-top: 20px;
     font-size: 1rem;
-
   }
 
   .optionRow {
@@ -414,25 +388,16 @@ h2 {
     font-size: large;
     border-radius: 5px;
   }
-
-
 }
-
 
 @media only screen and (max-width: 400px) {
-  .mainBox {
-    background-color: rgb(158, 194, 73);
-  }
-
   .quizContent {
     padding: 5px 10px 30px 10px;
   }
 
-
   .questionText {
     margin-top: 20px;
     font-size: 1rem;
-
   }
 
   .optionRow {
@@ -447,18 +412,9 @@ h2 {
     font-size: large;
     border-radius: 5px;
   }
-
-
 }
 
-
-
-
 @media only screen and (max-width: 300px) {
-  .mainBox {
-    background-color: rgb(189, 238, 76);
-  }
-
   .optionRow {
     height: 35px;
     width: 60%;
@@ -466,7 +422,6 @@ h2 {
     margin: 0 auto;
     margin-bottom: 15px;
   }
-
 
   .btnResult {
     height: 150px;

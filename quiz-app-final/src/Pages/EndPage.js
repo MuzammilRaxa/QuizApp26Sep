@@ -25,13 +25,13 @@ function EndPage() {
           Success rate is {correctScore} into {allQuestion.length}
         </h2>
 
-        <h2 className="endResult" style={{ backgroundColor: "#b1ccff", border: '3px solid rgb(68 87 96)' }}>
+        <h2 className="endResult" style={{ backgroundColor: "rgb(132, 245, 147)", border: '3px solid rgb(68 87 96)' }}>
           Score is {(100 / allQuestion.length) * correctScore}% into 100%{" "}
         </h2>
 
         {correctScore > 0 ? (
           <div id="correctColor" className="emojiSpace">
-            <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>
+            <h2 className="endResult" style={{ backgroundColor: "rgb(95, 202, 86)" }}>
               Your Correct answer is {correctScore} &#128076;
             </h2>
             <span style={{ fontSize: "50px" }}> &#128150;</span>
