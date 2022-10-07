@@ -30,7 +30,7 @@ function QuizPage() {
   } else if (allQuestion[questionNumber].difficulty === "hard") {
     quizLevel = 3;
   }
-  
+
 
   function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -77,6 +77,7 @@ function QuizPage() {
         role="progressbar"
         style={{
           width: `${(100 / allQuestion.length) * questionNumber}%`,
+          borderRadius: '0px !important'
         }}
         aria-valuenow="75"
         aria-valuemin="0"
@@ -126,7 +127,7 @@ function QuizPage() {
             {selectedOption &&
               allQuestion[questionNumber].correct_answer === selectedOption ? (
               <span id="selectedQuizResult">
-                <p>CorrectScore &#127881; !!</p>
+                <p>Correct &#127881; !!</p>
               </span>
             ) : (
               selectedOption && (

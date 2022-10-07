@@ -52,7 +52,7 @@ function EndPage() {
           </div>
         ) : (
           <div id="noIncorrect">
-            <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>Congratulation!! Your incorrectScore is{incorrectScore}&#128077;
+            <h2 className="endResult" style={{ backgroundColor: "aquamarine" }}>Congratulation!! Your less Score is{incorrectScore}&#128077;
             </h2>
           </div>
         )}

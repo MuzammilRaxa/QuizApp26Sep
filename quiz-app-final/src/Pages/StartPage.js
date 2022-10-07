@@ -7,7 +7,7 @@ function StartPage() {
 
     return (
         <div className="startPage">
-            <h1> Welcom to Page For the start Quiz. </h1>
+            <h1> Welcome to the start quiz page! </h1>
             <button className="btn" onClick={() => setquizPageState("startQuiz")}>
                 Start now
             </button>
