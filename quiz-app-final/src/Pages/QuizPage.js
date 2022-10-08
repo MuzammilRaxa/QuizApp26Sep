@@ -18,18 +18,9 @@ function QuizPage() {
   } = useContext(QuizStateContext);
 
   const [selectedOption, setSelectedOption] = useState("");
-  const [, setAllOptions] = useState("");
+  const [allOptions, setAllOptions] = useState("");
+  const [quizLevel, setQuizLevel] = useState(0)
 
-
-  let quizLevel = 0;
-
-  if (allQuestion[questionNumber].difficulty === "easy") {
-    quizLevel = 1;
-  } else if (allQuestion[questionNumber].difficulty === "medium") {
-    quizLevel = 2;
-  } else if (allQuestion[questionNumber].difficulty === "hard") {
-    quizLevel = 3;
-  }
 
 
   function shuffleArray(array) {
@@ -46,6 +37,8 @@ function QuizPage() {
   }
 
   const nextQuestion = () => {
+
+
     allQuestion[questionNumber].correct_answer === selectedOption
       ? setCorrectScore(correctScore + 1)
       : setIncorrectScore(incorrectScore + 1);
@@ -54,6 +47,7 @@ function QuizPage() {
     questionNumber === allQuestion.length - 1
       ? setquizPageState("quizResult")
       : setQuestionNumber(questionNumber + 1);
+
   };
 
   const selectOption = (ansOption) => {
@@ -68,6 +62,7 @@ function QuizPage() {
     }
     let mixArray = shuffleArray(allQuestion[questionNumber].incorrect_answers);
     setAllOptions(mixArray);
+
   }, [questionNumber]);
 
   return (
@@ -95,7 +90,7 @@ function QuizPage() {
                 Category:
                 {decodeURIComponent(allQuestion[questionNumber].category)}
               </span>
-              <span className="starContainer">{Star({ quizLevel })}</span>
+              <span className="starContainer">{Star({ quizLevel, setQuizLevel })}</span>
             </span>
             <h2 className="questionText">
               {decodeURIComponent(allQuestion[questionNumber].question)}
@@ -157,7 +152,7 @@ function QuizPage() {
 
         <div className="endFlexBox">
           <div className="scoreBox">
-            <span>Score{(100 / allQuestion.length) * correctScore}%</span>
+            <span>Score {(100 / allQuestion.length) * correctScore}%</span>
             <span>
               Max Score {100 - (100 / allQuestion.length) * incorrectScore}%
             </span>

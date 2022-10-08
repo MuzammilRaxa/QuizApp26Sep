@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { QuizStateContext } from "../Helpers/Context";
+import { allQuestion } from "../Helpers/Questions";
 
+export const Star = ({ quizLevel, setQuizLevel }) => {
+    let { questionNumber } = useContext(QuizStateContext);
 
-
-export const Star = ({ quizLevel }) => {
+    const questionLevel = allQuestion[questionNumber].difficulty;
+    if (questionLevel === "easy") {
+        quizLevel = 1;
+    } else if (questionLevel === "medium") {
+        quizLevel = 2;
+    } else if (questionLevel === "hard") {
+        quizLevel = 3;
+    }
 
     let emptyStar = 0;
 
@@ -45,5 +55,3 @@ export const Star = ({ quizLevel }) => {
         </div>
     );
 };
-
-
