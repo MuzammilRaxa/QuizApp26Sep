@@ -10,7 +10,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [correctScore, setCorrectScore] = useState(0);
   const [incorrectScore, setIncorrectScore] = useState(0);
-  const [questionNumber, setQuestionNumber] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
 
   return (
@@ -27,8 +27,8 @@ function App() {
             setCorrectScore,
             incorrectScore,
             setIncorrectScore,
-            questionNumber,
-            setQuestionNumber,
+            currentQuestion,
+            setCurrentQuestion,
           }} >
 
           {quizPageState === 'menu' && <StartPage />}

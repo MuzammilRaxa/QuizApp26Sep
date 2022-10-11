@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import { allQuestion } from "../Helpers/Questions";
 import { QuizStateContext } from "../Helpers/Context";
 
-
 export default function Options({ selectedOption, setSelectedOption }) {
-
-  let { questionNumber } = useContext(QuizStateContext);
-
+  let { currentQuestion } = useContext(QuizStateContext);
+  let inc_ans = allQuestion[currentQuestion].incorrect_answers;
 
   const selectOption = (ansOption) => {
     setSelectedOption(ansOption);
@@ -14,10 +12,11 @@ export default function Options({ selectedOption, setSelectedOption }) {
 
   return (
     <div className="allOptions">
-      {allQuestion[questionNumber].incorrect_answers.map((ansOption) => (
+      {inc_ans.map((ansOption) => (
         <div className="optionRow">
           <button
-            className={`option ${selectedOption === ansOption ? "selectedOption" : ""}`}
+            className={`option 
+            ${selectedOption === ansOption ? "selectedOption" : ""}`}
             disabled={selectedOption}
             checked={selectedOption === ansOption}
             value={selectedOption}

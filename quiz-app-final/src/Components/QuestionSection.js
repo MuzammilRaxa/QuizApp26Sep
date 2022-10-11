@@ -5,7 +5,7 @@ import { Star } from "../Components/Star"
 
 
 export default function QuestionSection() {
-    let { questionNumber } = useContext(QuizStateContext);
+    let { currentQuestion } = useContext(QuizStateContext);
     const [quizLevel, setQuizLevel] = useState(0)
 
 
@@ -13,16 +13,16 @@ export default function QuestionSection() {
         <div className="questionBox">
             <span className="questionDetails">
                 <span id="hQuestion">
-                    Question: {questionNumber + 1} into {allQuestion.length}
+                    Question: {currentQuestion + 1} into {allQuestion.length}
                 </span>
                 <span className="starContainer">
                     Category:
-                    {decodeURIComponent(allQuestion[questionNumber].category)}
+                    {decodeURIComponent(allQuestion[currentQuestion].category)}
                 </span>
                 <span className="starContainer">{Star({ quizLevel, setQuizLevel })}</span>
             </span>
             <h2 className="questionText">
-                {decodeURIComponent(allQuestion[questionNumber].question)}
+                {decodeURIComponent(allQuestion[currentQuestion].question)}
             </h2>
         </div>
     )

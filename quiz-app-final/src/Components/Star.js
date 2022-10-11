@@ -1,28 +1,44 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
 
-export const Star = ({ quizLevel, setQuizLevel }) => {
-    let { questionNumber } = useContext(QuizStateContext);
+export const Star = ({ quizLevel }) => {
 
-    const questionLevel = allQuestion[questionNumber].difficulty;
-    if (questionLevel === "easy") {
-        quizLevel = 1;
-    } else if (questionLevel === "medium") {
-        quizLevel = 2;
-    } else if (questionLevel === "hard") {
-        quizLevel = 3;
+    let { currentQuestion } = useContext(QuizStateContext);
+    const questionLevel = allQuestion[currentQuestion].difficulty;
+
+    switch (questionLevel) {
+        case "easy":
+            quizLevel = 1;
+            break;
+        case "medium":
+            quizLevel = 2;
+            break;
+        case "hard":
+            quizLevel = 3;
+            break;
+
+        default: quizLevel = 1
+            break;
     }
 
     let emptyStar = 0;
 
-    if (quizLevel === 1) {
-        emptyStar = 4;
-    } else if (quizLevel === 2) {
-        emptyStar = 3;
-    } else if (quizLevel === 3) {
-        emptyStar = 2;
+    switch (quizLevel) {
+        case 1:
+            emptyStar = 4;
+            break;
+        case 2:
+            emptyStar = 3;
+            break;
+        case 3:
+            emptyStar = 2;
+            break;
+
+        default: emptyStar = 2;
+            break;
     }
+
 
     return (
         <div className="iconArray">

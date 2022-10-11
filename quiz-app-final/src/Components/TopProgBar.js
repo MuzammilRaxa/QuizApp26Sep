@@ -3,14 +3,14 @@ import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
 
 export default function TopProgBar() {
-    let { questionNumber } = useContext(QuizStateContext);
+    let { currentQuestion } = useContext(QuizStateContext);
     return (
         <div>
             <div
                 className="progress progressBarTop "
                 role="progressbar"
                 style={{
-                    width: `${(100 / allQuestion.length) * questionNumber}%`,
+                    width: `${(100 / allQuestion.length) * currentQuestion}%`,
                     borderRadius: "0px !important",
                 }}
                 aria-valuenow="75"

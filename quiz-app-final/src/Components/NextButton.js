@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
-
 
 export default function NextButton({ selectedOption, setSelectedOption }) {
     let {
@@ -10,25 +9,26 @@ export default function NextButton({ selectedOption, setSelectedOption }) {
         setCorrectScore,
         incorrectScore,
         setIncorrectScore,
-        questionNumber,
-        setQuestionNumber,
+        currentQuestion,
+        setCurrentQuestion,
     } = useContext(QuizStateContext);
 
+    let correct_ans = allQuestion[currentQuestion].correct_answer;
+
     const nextQuestion = () => {
-        allQuestion[questionNumber].correct_answer === selectedOption
+        correct_ans === selectedOption
             ? setCorrectScore(correctScore + 1)
             : setIncorrectScore(incorrectScore + 1);
         setSelectedOption("");
 
-        questionNumber === allQuestion.length - 1
+        currentQuestion === allQuestion.length - 1
             ? setquizPageState("quizResult")
-            : setQuestionNumber(questionNumber + 1);
+            : setCurrentQuestion(currentQuestion + 1);
     };
 
     return (
         <div className="btnResult">
-            {selectedOption &&
-                allQuestion[questionNumber].correct_answer === selectedOption ? (
+            {selectedOption && correct_ans === selectedOption ? (
                 <span id="selectedQuizResult">
                     <p>Correct &#127881; !!</p>
                 </span>
@@ -40,7 +40,7 @@ export default function NextButton({ selectedOption, setSelectedOption }) {
                 )
             )}
 
-            {questionNumber === allQuestion.length - 1 ? (
+            {currentQuestion === allQuestion.length - 1 ? (
                 <button
                     className={` ${!selectedOption ? "hideBtn" : "btn"}`}
                     disabled={!selectedOption}
@@ -58,5 +58,5 @@ export default function NextButton({ selectedOption, setSelectedOption }) {
                 </button>
             )}
         </div>
-    )
+    );
 }
