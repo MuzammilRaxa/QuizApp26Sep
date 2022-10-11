@@ -21,7 +21,6 @@ export default function ProgressBar() {
             aria-label="Example 20px high"
             style={{ width: `${(100 / allQuestion.length) * correctScore}%` }}
           >
-            {/* score{(100 / allQuestion.length) * correctScore}% */}
           </div>
           <div
             className="progress-bar lessProgressBar"

@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
-import TopProgBar from "../Components/TopProgBar"
-import QuestionSection from "../Components/QuestionSection"
-import ProgressBar from "../Components/ProgressBar"
+import TopProgBar from "../Components/TopProgBar";
+import QuestionSection from "../Components/QuestionSection";
+import ProgressBar from "../Components/ProgressBar";
+import Options from "../Components/Options";
+import NextButton from "../Components/NextButton";
 import "../App.css";
 
 function QuizPage() {
@@ -22,8 +24,6 @@ function QuizPage() {
   const [selectedOption, setSelectedOption] = useState("");
   const [allOptions, setAllOptions] = useState("");
 
-
-
   function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
       // Generate random number
@@ -37,19 +37,16 @@ function QuizPage() {
     return array;
   }
 
-  const nextQuestion = () => {
+  // const nextQuestion = () => {
+  //   allQuestion[questionNumber].correct_answer === selectedOption
+  //     ? setCorrectScore(correctScore + 1)
+  //     : setIncorrectScore(incorrectScore + 1);
+  //   setSelectedOption("");
 
-
-    allQuestion[questionNumber].correct_answer === selectedOption
-      ? setCorrectScore(correctScore + 1)
-      : setIncorrectScore(incorrectScore + 1);
-    setSelectedOption("");
-
-    questionNumber === allQuestion.length - 1
-      ? setquizPageState("quizResult")
-      : setQuestionNumber(questionNumber + 1);
-
-  };
+  //   questionNumber === allQuestion.length - 1
+  //     ? setquizPageState("quizResult")
+  //     : setQuestionNumber(questionNumber + 1);
+  // };
 
   const selectOption = (ansOption) => {
     setSelectedOption(ansOption);
@@ -63,7 +60,6 @@ function QuizPage() {
     }
     let mixArray = shuffleArray(allQuestion[questionNumber].incorrect_answers);
     setAllOptions(mixArray);
-
   }, [questionNumber]);
 
   return (
@@ -72,23 +68,10 @@ function QuizPage() {
       <div className="quizContent">
         <div className="topFlexBox">
           <QuestionSection />
-          {/* <div className="questionBox">
-            <span className="questionDetails">
-              <span id="hQuestion">
-                Question: {questionNumber + 1} into {allQuestion.length}
-              </span>
-              <span className="starContainer">
-                Category:
-                {decodeURIComponent(allQuestion[questionNumber].category)}
-              </span>
-              <span className="starContainer">{Star({ quizLevel, setQuizLevel })}</span>
-            </span>
-            <h2 className="questionText">
-              {decodeURIComponent(allQuestion[questionNumber].question)}
-            </h2>
-          </div> */}
-
-          <div className="allOptions">
+          <Options
+            setSelectedOption={setSelectedOption}
+            selectedOption={selectedOption} />
+          {/* <div className="allOptions">
             {allQuestion[questionNumber].incorrect_answers.map((ansOption) => (
               <div className="optionRow">
                 <button
@@ -105,11 +88,10 @@ function QuizPage() {
                 </button>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="centerFlexBox">
-
-          <div className="btnResult">
+          {/* <div className="btnResult">
             {selectedOption &&
               allQuestion[questionNumber].correct_answer === selectedOption ? (
               <span id="selectedQuizResult">
@@ -125,63 +107,28 @@ function QuizPage() {
 
             {questionNumber === allQuestion.length - 1 ? (
               <button
-                className={` ${!selectedOption ? "hideBtn" : "btn"
-                  }`}
+                className={` ${!selectedOption ? "hideBtn" : "btn"}`}
                 disabled={!selectedOption}
                 onClick={nextQuestion}
               >
                 Finish Quiz
               </button>
             ) : (
-              <button className={`${!selectedOption ? "hideBtn" : "btn"
-                }`} disabled={!selectedOption} onClick={nextQuestion}>
+              <button
+                className={`${!selectedOption ? "hideBtn" : "btn"}`}
+                disabled={!selectedOption}
+                onClick={nextQuestion}
+              >
                 Next Question
               </button>
             )}
-          </div>
-        </div>
-
-        <div className="endFlexBox">
-         
-          <ProgressBar />
-          {/* <div className="progressBarBox">
-            <div className="progress">
-              <div
-                className="progress-bar scoreProgressBar"
-                role="progressbar"
-                aria-label="Example 20px high"
-                style={{ width: `${(100 / allQuestion.length) * correctScore}%` }}
-              >
-                score{(100 / allQuestion.length) * correctScore}%
-              </div>
-              <div
-                className="progress-bar lessProgressBar"
-                role="progressbar"
-                aria-label="Example 20px high"
-                style={{ width: `${(100 / allQuestion.length) * incorrectScore}%` }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-              <div
-                className="progress progressBarBackGround"
-                style={{
-                  width: `${100 - (100 / allQuestion.length) * incorrectScore}%`,
-                }}
-              >
-                <div
-                  className="progress-bar progressMaxScore "
-                  role="progressbar"
-                  style={{
-                    width: `${100 - (100 / allQuestion.length) * incorrectScore}%`,
-                  }}
-                  aria-valuenow="75"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
           </div> */}
+          <NextButton
+            setSelectedOption={setSelectedOption}
+            selectedOption={selectedOption} />
+        </div>
+        <div className="endFlexBox">
+          <ProgressBar />
         </div>
       </div>
     </div>
