@@ -3,7 +3,9 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { QuizStateContext } from "../Helpers/Context";
 import { allQuestion } from "../Helpers/Questions";
-import { Star } from "../Components/Star"
+import TopProgBar from "../Components/TopProgBar"
+import QuestionSection from "../Components/QuestionSection"
+import ProgressBar from "../Components/ProgressBar"
 import "../App.css";
 
 function QuizPage() {
@@ -19,7 +21,6 @@ function QuizPage() {
 
   const [selectedOption, setSelectedOption] = useState("");
   const [allOptions, setAllOptions] = useState("");
-  const [quizLevel, setQuizLevel] = useState(0)
 
 
 
@@ -67,21 +68,11 @@ function QuizPage() {
 
   return (
     <div className="quizPage">
-      <div
-        className="progress progressBarTop "
-        role="progressbar"
-        style={{
-          width: `${(100 / allQuestion.length) * questionNumber}%`,
-          borderRadius: '0px !important'
-        }}
-        aria-valuenow="75"
-        aria-valuemin="0"
-        aria-valuemax="100"
-      ></div>
-
+      <TopProgBar />
       <div className="quizContent">
         <div className="topFlexBox">
-          <div className="questionBox">
+          <QuestionSection />
+          {/* <div className="questionBox">
             <span className="questionDetails">
               <span id="hQuestion">
                 Question: {questionNumber + 1} into {allQuestion.length}
@@ -95,7 +86,7 @@ function QuizPage() {
             <h2 className="questionText">
               {decodeURIComponent(allQuestion[questionNumber].question)}
             </h2>
-          </div>
+          </div> */}
 
           <div className="allOptions">
             {allQuestion[questionNumber].incorrect_answers.map((ansOption) => (
@@ -151,13 +142,9 @@ function QuizPage() {
         </div>
 
         <div className="endFlexBox">
-          <div className="scoreBox">
-            <span>Score {(100 / allQuestion.length) * correctScore}%</span>
-            <span>
-              Max Score {100 - (100 / allQuestion.length) * incorrectScore}%
-            </span>
-          </div>
-          <div className="progressBarBox">
+         
+          <ProgressBar />
+          {/* <div className="progressBarBox">
             <div className="progress">
               <div
                 className="progress-bar scoreProgressBar"
@@ -165,7 +152,7 @@ function QuizPage() {
                 aria-label="Example 20px high"
                 style={{ width: `${(100 / allQuestion.length) * correctScore}%` }}
               >
-                {/* score{(100 / allQuestion.length) * correctScore}% */}
+                score{(100 / allQuestion.length) * correctScore}%
               </div>
               <div
                 className="progress-bar lessProgressBar"
@@ -194,7 +181,7 @@ function QuizPage() {
                 ></div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
