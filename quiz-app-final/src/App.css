@@ -94,8 +94,19 @@ progress[value]::-webkit-progress-bar {
   margin-left: 2px;
   padding: 0%;
   height: 10px;
-  color: gray;
+  color: rgb(236, 233, 233);
 }
+
+.iconArray {
+  font-size: 20px;
+  color: rgb(236, 233, 233);
+
+}
+
+.fillStar {
+  color: #0e0e0e;
+}
+
 
 .iconColor {
   color: beige;
@@ -412,4 +423,8 @@ h2 {
     font-size: large;
     border-radius: 5px;
   }
+}
+
+.icon {
+  color: yellow;
 }
