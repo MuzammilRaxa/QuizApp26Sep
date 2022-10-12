@@ -6,7 +6,7 @@ import allQuestion from "../Helpers/Questions";
 import TopProgBar from "../Components/TopProgBar";
 import QuestionSection from "../Components/QuestionSection";
 import ProgressBar from "../Components/ProgressBar";
-import Options from "../Components/Options";
+import Options from "../Components/AnsOptions";
 import NextButton from "../Components/NextButton";
 import "../App.css";
 

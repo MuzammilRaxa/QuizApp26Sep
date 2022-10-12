@@ -24,7 +24,7 @@ export default function Options({ selectedOption, setSelectedOption }) {
               selectOption(ansOption);
             }}
           >
-            {decodeURIComponent(ansOption)}
+            {ansOption}
           </button>
         </div>
       ))}

@@ -3,7 +3,6 @@ import { QuizStateContext } from "../Helpers/Context";
 import allQuestion from "../Helpers/Questions";
 
 export const Star = ({ quizLevel }) => {
-
     let { currentQuestion } = useContext(QuizStateContext);
 
     const questionLevel = allQuestion[currentQuestion].difficulty;
@@ -23,7 +22,7 @@ export const Star = ({ quizLevel }) => {
             break;
 
         default:
-            quizLevel = 1
+            quizLevel = 1;
             emptyStar = 4;
             break;
     }
@@ -32,8 +31,7 @@ export const Star = ({ quizLevel }) => {
             {Array(5)
                 .fill(quizLevel)
                 .map((val, index) => (
-                    <span key={index} className={(val < index + 1) ? '' : 'fillStar'}>
-                        {console.log("val", val)}
+                    <span key={index} className={val < index + 1 ? "" : "fillStar"}>
                         &#9733;
                     </span>
                 ))}

@@ -17,12 +17,12 @@ export default function QuestionSection() {
                 </span>
                 <span className="starContainer">
                     Category:
-                    {decodeURIComponent(allQuestion[currentQuestion].category)}
+                    {allQuestion[currentQuestion].category}
                 </span>
                 <span className="starContainer">{Star({ quizLevel, setQuizLevel })}</span>
             </span>
             <h2 className="questionText">
-                {decodeURIComponent(allQuestion[currentQuestion].question)}
+                {allQuestion[currentQuestion].question}
             </h2>
         </div>
     )

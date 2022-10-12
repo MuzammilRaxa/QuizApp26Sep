@@ -1,4 +1,4 @@
-const allQuestion = [
+const questionArr = [
     {
         "category": "Entertainment%3A%20Video%20Games",
         "type": "multiple",
@@ -205,6 +205,6 @@ const getDecodedData = (data) => {
     })
 }
 
-getDecodedData(allQuestion)
-console.log('allQuestion', allQuestion)
-export default allQuestion
+const allQuestion = getDecodedData(questionArr)
+console.log(allQuestion)
+export default allQuestion 
