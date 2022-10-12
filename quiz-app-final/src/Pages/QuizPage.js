@@ -48,8 +48,7 @@ function QuizPage() {
             setSelectedOption={setSelectedOption}
             selectedOption={selectedOption} />
         </div>
-        <div className="centerFlexBox">
-
+        <div className="centerFlexBox"> 
           <NextButton
             setSelectedOption={setSelectedOption}
             selectedOption={selectedOption} />
