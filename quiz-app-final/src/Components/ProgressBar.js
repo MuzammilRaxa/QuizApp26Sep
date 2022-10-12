@@ -4,9 +4,34 @@ import { QuizStateContext } from "../Helpers/Context";
 
 export default function ProgressBar() {
   let { correctScore, incorrectScore } = useContext(QuizStateContext);
-
   return (
     <div>
+      <div className="progress">
+        <div
+          className="progress-bar"
+          role="progressbar"
+          style={{ width: `${(100 / allQuestion.length) * correctScore}%` }}
+          aria-valuenow="15"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+        <div
+          className="progress-bar bg-success"
+          role="progressbar"
+          style={{ width: `${(100 / allQuestion.length) * incorrectScore}%` }}
+          aria-valuenow="30"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+        <div
+          className="progress-bar bg-info progressMaxScore"
+          role="progressbar"
+          style={{ width: `${100 - (350 / allQuestion.length) * incorrectScore}%` }}
+          aria-valuenow="20"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
       <div className="scoreBox">
         <span>Score {(100 / allQuestion.length) * correctScore}%</span>
         <span>
@@ -20,8 +45,7 @@ export default function ProgressBar() {
             role="progressbar"
             aria-label="Example 20px high"
             style={{ width: `${(100 / allQuestion.length) * correctScore}%` }}
-          >
-          </div>
+          ></div>
           <div
             className="progress-bar lessProgressBar"
             role="progressbar"
@@ -32,7 +56,7 @@ export default function ProgressBar() {
             aria-valuemax="100"
           ></div>
           <div
-            className="progress progressBarBackGround"
+            className="progress progressMax progressBarBackGround"
             style={{
               width: `${100 - (100 / allQuestion.length) * incorrectScore}%`,
             }}
@@ -40,9 +64,7 @@ export default function ProgressBar() {
             <div
               className="progress-bar progressMaxScore "
               role="progressbar"
-              style={{
-                width: `${100 - (100 / allQuestion.length) * incorrectScore}%`,
-              }}
+              style={{ width: `${100 - (100 / allQuestion.length) * incorrectScore}%` }}
               aria-valuenow="75"
               aria-valuemin="0"
               aria-valuemax="100"
