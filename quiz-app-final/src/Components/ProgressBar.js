@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { allQuestion } from "../Helpers/Questions";
+import allQuestion from "../Helpers/Questions";
 import { QuizStateContext } from "../Helpers/Context";
 
 export default function ProgressBar() {

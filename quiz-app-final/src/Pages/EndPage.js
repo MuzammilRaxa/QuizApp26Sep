@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { QuizStateContext } from "../Helpers/Context";
-import { allQuestion } from "../Helpers/Questions";
+import allQuestion from "../Helpers/Questions";
 
 function EndPage() {
   const { correctScore, setCorrectScore, setScore, incorrectScore, setIncorrectScore, setquizPageState, setCurrentQuestion, } = useContext(QuizStateContext);

@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { QuizStateContext } from "../Helpers/Context";
-import { allQuestion } from "../Helpers/Questions";
+import allQuestion from "../Helpers/Questions";
 import TopProgBar from "../Components/TopProgBar";
 import QuestionSection from "../Components/QuestionSection";
 import ProgressBar from "../Components/ProgressBar";

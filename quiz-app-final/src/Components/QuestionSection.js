@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { QuizStateContext } from "../Helpers/Context";
-import { allQuestion } from "../Helpers/Questions";
+import allQuestion from "../Helpers/Questions";
 import { Star } from "../Components/Star"
 
 

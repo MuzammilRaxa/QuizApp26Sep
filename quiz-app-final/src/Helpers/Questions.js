@@ -1,4 +1,4 @@
-export const allQuestion = [
+const allQuestion = [
     {
         "category": "Entertainment%3A%20Video%20Games",
         "type": "multiple",
@@ -194,3 +194,17 @@ export const allQuestion = [
 
 ]
 
+const getDecodedData = (data) => {
+    return data.map((item) => {
+        let itemObj = {}
+        for (let key in item)
+            itemObj[key] = key === 'incorrect_answers'
+                ? decodeURIComponent(item[key]).split(',')
+                : decodeURIComponent(item[key])
+        return itemObj
+    })
+}
+
+getDecodedData(allQuestion)
+console.log('allQuestion', allQuestion)
+export default allQuestion

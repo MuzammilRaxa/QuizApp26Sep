@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { QuizStateContext } from "../Helpers/Context";
-import { allQuestion } from "../Helpers/Questions";
+import allQuestion from "../Helpers/Questions";
 
 export default function NextButton({ selectedOption, setSelectedOption }) {
     let {
