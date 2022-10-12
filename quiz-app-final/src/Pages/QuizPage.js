@@ -12,7 +12,8 @@ import "../App.css";
 
 function QuizPage() {
   let { currentQuestion } = useContext(QuizStateContext);
-
+  let inc_ans = allQuestion[currentQuestion].incorrect_answers;
+  let correct_ans = allQuestion[currentQuestion].correct_answer;
   const [selectedOption, setSelectedOption] = useState("");
   const [allOptions, setAllOptions] = useState("");
 
@@ -28,12 +29,12 @@ function QuizPage() {
   }
 
   useEffect(() => {
-    if (allQuestion[currentQuestion].incorrect_answers.length < 4) {
-      allQuestion[currentQuestion].incorrect_answers.push(
-        allQuestion[currentQuestion].correct_answer
+    if (inc_ans.length < 4) {
+      inc_ans.push(
+        correct_ans
       );
     }
-    let mixArray = shuffleArray(allQuestion[currentQuestion].incorrect_answers);
+    let mixArray = shuffleArray(inc_ans);
     setAllOptions(mixArray);
   }, [currentQuestion]);
 

@@ -39,7 +39,6 @@ export default function NextButton({ selectedOption, setSelectedOption }) {
                     </span>
                 )
             )}
-
             {currentQuestion === allQuestion.length - 1 ? (
                 <button
                     className={` ${!selectedOption ? "hideBtn" : "btn"}`}
